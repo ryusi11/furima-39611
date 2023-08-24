@@ -36,7 +36,7 @@ Things you may want to cover:
 | first_name         | string | null: false               |
 | last_name_kana     | string | null: false, unique: true |
 | first_name_kana    | string | null: false               |
-| birthday           | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 
@@ -45,18 +45,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| user           | references | null: false, foreign_key: true |
-| item_name      | string     | null: false                    |
-| explain        | string     | null: false                    |
-| category       | text       | null: false                    |
-| condition      | string     | null: false                    |
-| delivery_price | string     | null: false                    |
-| place          | text       | null: false                    |
-| days           | string     | null: false                    |
-| price          | text       | null: false                    |
-| comment        | text       |                                |
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| user              | references | null: false, foreign_key: true |
+| item_name         | string     | null: false                    |
+| explain           | text       | null: false                    |
+| category_id       | integer    | null: false                    |
+| condition_id      | integer    | null: false                    |
+| delivery_price_id | integer    | null: false                    |
+| place_id          | integer    | null: false                    |
+| days_id           | integer    | null: false                    |
+| price             | integer    | null: false                    |
 
 ### Association
 
@@ -70,10 +69,10 @@ Things you may want to cover:
 | ------------------ | ---------- | ------------------------------ |
 | order              | references | null: false, foreign_key: true |
 | code               | string     | null: false                    |
-| prefecture         | string     | null: false                    |
+| place_id           | integer    | null: false                    |
 | city               | string     | null: false                    |
 | street             | string     | null: false                    |
-| building           | string     | null: false                    |
+| building           | string     |                                |
 | phone              | string     | null: false                    |
 
 ### Association
