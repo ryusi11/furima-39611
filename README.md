@@ -32,8 +32,10 @@ Things you may want to cover:
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 | nickname           | string | null: false               |
-| name               | string | null: false, unique: true |
-| name_kana          | string | null: false               |
+| last_name          | string | null: false, unique: true |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false, unique: true |
+| first_name_kana    | string | null: false               |
 | birthday           | string | null: false               |
 
 ### Association
@@ -45,6 +47,7 @@ Things you may want to cover:
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
+| user           | references | null: false, foreign_key: true |
 | item_name      | string     | null: false                    |
 | explain        | string     | null: false                    |
 | category       | text       | null: false                    |
@@ -52,38 +55,40 @@ Things you may want to cover:
 | delivery_price | string     | null: false                    |
 | place          | text       | null: false                    |
 | days           | string     | null: false                    |
-| sale_price     | string     | null: false                    |
 | price          | text       | null: false                    |
-| commission     | string     | null: false                    |
-| profit         | string     | null: false                    |
-| favorite       | text       | null: false                    |
-| report         | string     | null: false                    |
-| comment        | text       | null: false                    |
+| comment        | text       |                                |
 
 ### Association
 
-- has_many :orders
+- belongs_to :user
+- has_one :order
 
 
 ## addresses テーブル
 
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| code               | string | null: false               |
-| prefecture         | string | null: false               |
-| city               | string | null: false               |
-| street             | string | null: false               |
-| building           | string | null: false               |
-| phone              | string | null: false               |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| order              | references | null: false, foreign_key: true |
+| code               | string     | null: false                    |
+| prefecture         | string     | null: false                    |
+| city               | string     | null: false                    |
+| street             | string     | null: false                    |
+| building           | string     | null: false                    |
+| phone              | string     | null: false                    |
 
 ### Association
 
-- has_many :orders
+- belongs_to :order
 
  ## orders テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
+| item               | references | null: false, foreign_key: true |
 | user               | references | null: false, foreign_key: true |
-| order              | references | null: false, foreign_key: true |
-| address            | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+- has_one :address
