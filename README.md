@@ -31,26 +31,38 @@ Things you may want to cover:
 | ------------------ | ------ | ------------------------- |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
-| name               | string | null: false               |
+| nickname           | string | null: false               |
+| name               | string | null: false, unique: true |
+| name_kana          | string | null: false               |
+| birthday           | string | null: false               |
 
 ### Association
 
 - has_many :items
 - has_many :orders
-- has_many :addresses
 
 ## items テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| name       | string     | null: false                    |
-| price      | string     | null: false                    |
-| comment    | text       | null: false                    |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| item_name      | string     | null: false                    |
+| explain        | string     | null: false                    |
+| category       | text       | null: false                    |
+| condition      | string     | null: false                    |
+| delivery_price | string     | null: false                    |
+| place          | text       | null: false                    |
+| days           | string     | null: false                    |
+| sale_price     | string     | null: false                    |
+| price          | text       | null: false                    |
+| commission     | string     | null: false                    |
+| profit         | string     | null: false                    |
+| favorite       | text       | null: false                    |
+| report         | string     | null: false                    |
+| comment        | text       | null: false                    |
 
 ### Association
 
 - has_many :orders
-- has_many :addresses
 
 
 ## addresses テーブル
