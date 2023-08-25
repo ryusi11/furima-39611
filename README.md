@@ -32,9 +32,9 @@ Things you may want to cover:
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
 | nickname           | string | null: false               |
-| last_name          | string | null: false, unique: true |
+| last_name          | string | null: false               |
 | first_name         | string | null: false               |
-| last_name_kana     | string | null: false, unique: true |
+| last_name_kana     | string | null: false               |
 | first_name_kana    | string | null: false               |
 | birthday           | date   | null: false               |
 
@@ -54,7 +54,7 @@ Things you may want to cover:
 | condition_id      | integer    | null: false                    |
 | delivery_price_id | integer    | null: false                    |
 | place_id          | integer    | null: false                    |
-| days_id           | integer    | null: false                    |
+| delivery_day_id   | integer    | null: false                    |
 | price             | integer    | null: false                    |
 
 ### Association
