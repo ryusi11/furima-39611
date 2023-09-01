@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品機能' do
     context '商品が出品できるとき' do
-      it 'すべての入力項目が存在すれば揃っていれば出品できる' do
+      it 'すべての入力項目が揃っていれば出品できる' do
         expect(@item).to be_valid
       end
     end
@@ -74,7 +74,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
-
+      it 'userが紐づいていないと保存できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
+      end
     end
     
   end
