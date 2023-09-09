@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    # binding.pry
     @order_location = OrderLocation.new(order_params)
     if @order_location.valid?
       pay_item
@@ -36,7 +37,7 @@ class OrdersController < ApplicationController
   # end
 
   def order_params
-    params.require(:order_location).permit(:code, :place_id, :city, :street, :building, :phone).merge(user_id: user_id, item_id: params[:item_id], token: params[:token])
+    params.require(:order_location).permit(:code, :place_id, :city, :street, :building, :phone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def pay_item

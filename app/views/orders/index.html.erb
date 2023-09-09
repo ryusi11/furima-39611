@@ -33,6 +33,9 @@
 
     <%= include_gon %>
     <%= form_with model: @order_location, url: item_orders_path(@item), id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
@@ -43,7 +46,7 @@
           <label class="form-text">カード情報</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_field 'card_number', class:"input-default", id:"number-form", placeholder:"例）2424242424242424" %>
+        <div id="number-form" class="input-default"></div>
         <div class='available-card'>
           <%= image_tag 'card-visa.gif', class: 'card-logo'%>
           <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
@@ -57,8 +60,7 @@
           <span class="indispensable">必須</span>
         </div>
         <div class='input-expiration-date-wrap'>
-          <%= f.text_field 'card_month', class:"input-default", id: "expiry-month-form", placeholder:"例）1月" %>
-          <%= f.text_field 'card_year', class:"input-default", id: "expiry-year-form", placeholder:"例）2000年" %>
+          <div id="expiry-form" class="input-default"></div>
         </div>
       </div>
       <div class="form-group">
@@ -66,10 +68,9 @@
           <label class="form-text">セキュリティコード</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_field 'card_cvc', class:"input-default", id:"cvc-form", placeholder:"例）321" %>
+          <div id="cvc-form" class="input-default"></div>
       </div>
     </div>
-    <%# /カード情報の入力 %>
     
     <%# 配送先の入力 %>
     <div class='shipping-address-form'>
