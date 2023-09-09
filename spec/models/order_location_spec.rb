@@ -13,8 +13,6 @@ RSpec.describe OrderLocation, type: :model do
       it 'すべての入力項目が揃っていれば購入できる' do
         expect(@order_location).to be_valid
       end
-    end
-    context '建物名が空でも購入できるとき' do
       it '建物名は空でも購入できる' do
         @order_location.building = ''
         expect(@order_location).to be_valid
