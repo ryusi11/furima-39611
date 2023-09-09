@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_index
-  # before_action :set_item
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
@@ -9,7 +8,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    # binding.pry
     @order_location = OrderLocation.new(order_params)
     if @order_location.valid?
       pay_item
@@ -31,10 +29,6 @@ class OrdersController < ApplicationController
       redirect_to root_path
     end
   end
-
-  # def set_item
-  #   @item = Item.find(params[:item_id])
-  # end
 
   def order_params
     params.require(:order_location).permit(:code, :place_id, :city, :street, :building, :phone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])

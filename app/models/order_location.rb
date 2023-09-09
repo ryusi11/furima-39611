@@ -15,7 +15,7 @@ class OrderLocation
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
-    Location.create(code: code, place_id: place_id, city: city, street: street, building: building, phone: phone)
+    Location.create(order: order_id, code: code, place_id: place_id, city: city, street: street, building: building, phone: phone)
   end
 
 end
