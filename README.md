@@ -63,7 +63,7 @@ Things you may want to cover:
 - has_one :order
 
 
-## addresses テーブル
+## locations テーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -90,4 +90,4 @@ Things you may want to cover:
 
 - belongs_to :item
 - belongs_to :user
-- has_one :address
+- has_one :location
